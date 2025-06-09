@@ -1,3 +1,5 @@
+//basic math functions
+
 const add = function(a, b) {
     return a + b;
 }
@@ -14,15 +16,20 @@ const divide = function(a, b) {
     return a / b;
 }
 
+// for test
 // console.log(add(2, 3));
 // console.log(subtract(4, 2));
 // console.log(multiply(4, 2));
 // console.log(divide (9, 3));
 
+//Var for numbers to be stored
+
 let firstNum
 let secondNum
 let operator
 
+//operating function that helps calcute with three arguement
+//operator and two numbers
 function operate(operator, a, b) {
     if (operator ===  '+') {
         return add(a, b);
@@ -37,5 +44,14 @@ function operate(operator, a, b) {
         return divide(a, b);
     }
 }
+//for test
+//  console.log(operate("/", 4, 2));
 
-console.log(operate("/", 4, 2));
+//function for display
+
+const button = document.getElementsByClassName('btn');
+for (let i = 0; i < button.length; i++) {
+    button[i].addEventListener('click',() => {
+    console.log("helloworld");
+    });
+}

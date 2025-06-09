@@ -48,7 +48,7 @@
 
 /* button styles  */
 
-#btn {
+.btn {
     font-size: 16px;
     background-color: black;
     color: plum;
