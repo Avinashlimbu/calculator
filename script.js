@@ -50,8 +50,22 @@ function operate(operator, a, b) {
 //function for display
 
 const button = document.getElementsByClassName('btn');
-for (let i = 0; i < button.length; i++) {
-    button[i].addEventListener('click',() => {
-    console.log("helloworld");
-    });
+const display = document.getElementById('display-area');
+function displayArea () {
+    for (let i = 0; i < button.length; i++) {
+        button[i].addEventListener('click',(event) => {
+            const target = event.target;
+            display.textContent = target.textContent;
+        });
+    }
 }
+
+displayArea();
+
+
+/*
+1. When the button is clicked
+>how would I on click get the element of html
+>store that number in a variable
+>make sure that number is displayed in the screen
+*/
