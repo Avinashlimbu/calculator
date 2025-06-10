@@ -24,9 +24,9 @@ const divide = function(a, b) {
 
 //Var for numbers to be stored
 
-let firstNum
-let secondNum
-let operator
+let firstNum = "";
+let secondNum = "";
+let operator = "";
 
 //operating function that helps calcute with three arguement
 //operator and two numbers
@@ -51,25 +51,35 @@ function operate(operator, a, b) {
 
 const button = document.getElementsByClassName('btn');
 const display = document.getElementById('display-area');
+const operators = document.querySelectorAll(".operator");
 
 function displayArea () {
     for (let i = 0; i < button.length; i++) {
         button[i].addEventListener('click',(event) => {
             const target = event.target;
-            let content = display.textContent = target.textContent;
-            let numberA = Number(content);
-            //console.log(content);
-            console.log(operate("+", numberA, numberA));
-            //console.log(content);
+            let content = display.textContent += target.textContent;
+            content = Number(content)
+            if (operator === "") {
+                firstNum += event.target.textContent;
+                console.log(firstNum);
+            } else {
+                secondNum += event.target.textContent;
+                console.log(secondNum);
+            }
+        
         });
     }
 }
 
 displayArea();
 
-function execution ()  {
-    
-}
+operators.forEach(function(op){
+    op.addEventListener("click", (event) => {
+        operator = event.target.textContent;
+        console.log(operator);
+    })
+})
+
 
 
 /*
