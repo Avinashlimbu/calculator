@@ -51,16 +51,25 @@ function operate(operator, a, b) {
 
 const button = document.getElementsByClassName('btn');
 const display = document.getElementById('display-area');
+
 function displayArea () {
     for (let i = 0; i < button.length; i++) {
         button[i].addEventListener('click',(event) => {
             const target = event.target;
-            display.textContent = target.textContent;
+            let content = display.textContent = target.textContent;
+            let numberA = Number(content);
+            //console.log(content);
+            console.log(operate("+", numberA, numberA));
+            //console.log(content);
         });
     }
 }
 
 displayArea();
+
+function execution ()  {
+    
+}
 
 
 /*
@@ -68,4 +77,9 @@ displayArea();
 >how would I on click get the element of html
 >store that number in a variable
 >make sure that number is displayed in the screen
+
+
+1. when the button is clicked it should store the number in firstNum
+2. when the button is clicked after the operator, it should be 
+
 */
