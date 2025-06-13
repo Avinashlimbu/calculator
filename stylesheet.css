@@ -17,14 +17,15 @@
 }
 
 
-.display-area {
-    height: 100px;
+#display-area {
+    color: black;
     border: 1px solid salmon;
     padding: 20px;
     align-items: center;
     margin: 0 auto;
     /* overflow: hidden; */
     text-align: center;
+    display: flex;
 }
 
 .inside-box {
@@ -33,9 +34,10 @@
     background-color: beige;
     border: 2px solid lightblue;
     flex-wrap: wrap;
-    width: 200px;
+    width: 300px;
     border: 1px solid salmon;
     gap: 10px;
+    align-items: center;
 
 }
 
@@ -43,6 +45,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    width: 200px;
+    align-content: center;
+    justify-content:space-between;
 }
 
 

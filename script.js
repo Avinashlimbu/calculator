@@ -16,12 +16,6 @@ const divide = function(a, b) {
     return a / b;
 }
 
-// for test
-// console.log(add(2, 3));
-// console.log(subtract(4, 2));
-// console.log(multiply(4, 2));
-// console.log(divide (9, 3));
-
 //Var for numbers to be stored
 
 let firstNum = "";
@@ -29,7 +23,6 @@ let secondNum = "";
 let operator = "";
 
 //operating function that helps calcute with three arguement
-//operator and two numbers
 function operate(operator, a, b) {
     if (operator ===  '+') {
         return add(a, b);
@@ -44,22 +37,22 @@ function operate(operator, a, b) {
         return divide(a, b);
     }
 }
-//for test
-//  console.log(operate("/", 4, 2));
 
 //function for display
 
-const button = document.getElementsByClassName('btn');
+const button = document.getElementsByClassName('numbers');
 const display = document.getElementById('display-area');
-const operators = document.querySelectorAll(".operator");
+const operators = document.querySelectorAll('.operator');
+const clearButton = document.getElementById('clear-button');
+const equalButton = document.getElementsByClassName('equal');
 
 function displayArea () {
     for (let i = 0; i < button.length; i++) {
         button[i].addEventListener('click',(event) => {
             const target = event.target;
-            let content = display.textContent += target.textContent;
+            let content = display.value += target.textContent;
             content = Number(content)
-            if (operator === "") {
+            if (operator === " ") {
                 firstNum += event.target.textContent;
                 console.log(firstNum);
             } else {
@@ -73,23 +66,25 @@ function displayArea () {
 
 displayArea();
 
+//operator function, don't think this is working
 operators.forEach(function(op){
     op.addEventListener("click", (event) => {
+        if (operator === "+") {
+            firstNum = "";
+        }
         operator = event.target.textContent;
-        console.log(operator);
+        console.log("operator is working");
     })
 })
 
 
+//clear button function
+clearButton.addEventListener('click', function() {
+    console.log("C is working");
+    firstNum = '';
+    secondNum = '';
+    operator = '';
+    document.getElementById('display-area').value = '';
+});
 
-/*
-1. When the button is clicked
->how would I on click get the element of html
->store that number in a variable
->make sure that number is displayed in the screen
 
-
-1. when the button is clicked it should store the number in firstNum
-2. when the button is clicked after the operator, it should be 
-
-*/
