@@ -16,7 +16,6 @@ body {
 .container {
     display: flex;
     flex-direction: row;
-    height: 400px;
     justify-content: center;
 }
 
@@ -24,24 +23,28 @@ body {
 #display-area {
     color: black;
     border: 1px solid salmon;
-    padding: 20px;
     align-items: center;
-    margin: 0 auto;
     /* overflow: hidden; */
     text-align: center;
     display: flex;
+    border-radius: 10px;
+    font-size: 24px;
+    text-align: right;
+    padding: 10px;
+    margin: 0px 20px;
+    width: 200px;
 }
 
 .inside-box {
     display: flex;
     flex-direction: column;
-    background-color: whitesmoke;
-    flex-wrap: wrap;
     width: 300px;
+    background-color: whitesmoke;
     border: 2px solid salmon;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
+    gap:20px
 
 }
 
