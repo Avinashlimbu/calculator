@@ -44,7 +44,7 @@ const button = document.getElementsByClassName('numbers');
 const display = document.getElementById('display-area');
 const operators = document.querySelectorAll('.operator');
 const clearButton = document.getElementById('clear-button');
-const equalButton = document.getElementsByClassName('equal');
+const equalButton = document.querySelectorAll('.equal');
 
 function displayArea () {
     for (let i = 0; i < button.length; i++) {
@@ -52,39 +52,42 @@ function displayArea () {
             const target = event.target;
             let content = display.value += target.textContent;
             content = Number(content)
-            if (operator === " ") {
-                firstNum += event.target.textContent;
-                console.log(firstNum);
-            } else {
-                secondNum += event.target.textContent;
-                console.log(secondNum);
-            }
-        
         });
     }
 }
 
 displayArea();
 
-//operator function, don't think this is working
+//clear button function
+function clear () {
+    clearButton.addEventListener('click', function() {
+        firstNum = '';
+        secondNum = '';
+        operator = '';
+        document.getElementById('display-area').value = '';
+    });
+}
+
+clear();
+
+//operator function
 operators.forEach(function(op){
     op.addEventListener("click", (event) => {
-        if (operator === "+") {
-            firstNum = "";
-        }
-        operator = event.target.textContent;
-        console.log("operator is working");
+        const target = event.target;
+        operator = target.textContent;
+        if (['+', '-', '*', '/'].includes(target.textContent)) {
+            firstNum = Number(display.value);
+            document.getElementById('display-area').value = '';
+        } 
     })
 })
 
+//equal button function
 
-//clear button function
-clearButton.addEventListener('click', function() {
-    console.log("C is working");
-    firstNum = '';
-    secondNum = '';
-    operator = '';
-    document.getElementById('display-area').value = '';
-});
-
-
+equalButton.forEach(function(equal) {
+    equal.addEventListener("click", () => {
+    secondNum = Number(display.value);
+    console.log(operate(operator, firstNum, secondNum))
+    document.getElementById('display-area').value = operate(operator, firstNum, secondNum);
+        })
+    })
