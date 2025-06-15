@@ -21,20 +21,17 @@ body {
 
 #display-area {
     color: black;
-    align-items: center;
-    /* overflow: hidden; */
-    text-align: center;
     display: flex;
-    font-size: 24px;
+    font-size: 32px;
     text-align: right;
     height: max-content;
     border: none;
     box-shadow: none;
     outline: none;
-    padding: 0px !important;
     background: transparent;
     width: 100%;
     max-width: 600px;
+    margin-right: 20px;
 }
 
 .inside-box {
@@ -43,7 +40,7 @@ body {
     background-color: whitesmoke;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 10px;
+    border-radius: 20px;
     max-width: 280px;
     gap: 10px;
 }
@@ -52,9 +49,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    border-radius: 10px;
 }
 
+.inside-box > .h3-style {
+    text-align: left;
+    align-self: flex-start;
+    padding: 0px 10px;
+    color: rgb(98, 17, 138);
+}
 
 /* button styles  */
 
@@ -74,23 +76,18 @@ body {
     box-shadow: 0 0 10px plum;
 }
 
-.inside-box > .h3-style {
-    text-align: left;
-    align-self: flex-start;
-    padding: 0px 10px;
-    color: rgb(98, 17, 138);
-}
-
 .equal {
     background-color:rgb(98, 17, 138);
     color: salmon;
-    border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 20px;
 }
 
 .decimal {
-    border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 20px;
 }
 
+
+/* footer design */
 footer {
     display: flex;
     text-align: center;
@@ -109,3 +106,4 @@ footer a:hover svg {
     transform: scale(1.1);
     fill: plum;
 }
+
