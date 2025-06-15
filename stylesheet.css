@@ -9,60 +9,103 @@
 body {
     background: #3F5EFB;
     background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(158, 82, 178, 1) 64%, rgba(252, 70, 107, 1) 100%);
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 
 /* Container Styles for the main  */
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
 
 #display-area {
     color: black;
-    border: 1px solid salmon;
     align-items: center;
     /* overflow: hidden; */
     text-align: center;
     display: flex;
-    border-radius: 10px;
     font-size: 24px;
     text-align: right;
-    padding: 10px;
-    margin: 0px 20px;
-    width: 200px;
+    height: max-content;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    padding: 0px !important;
+    background: transparent;
+    width: 100%;
+    max-width: 600px;
 }
 
 .inside-box {
     display: flex;
     flex-direction: column;
-    width: 300px;
     background-color: whitesmoke;
-    border: 2px solid salmon;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
-    gap:20px
-
+    max-width: 280px;
+    gap: 10px;
 }
 
 .bottom-calculator {
     display: flex;
     flex-wrap: wrap;
-    width: 200px;
     align-content: center;
-    justify-content:space-between;
+    border-radius: 10px;
 }
 
 
 /* button styles  */
 
 .btn {
-    font-size: 16px;
+    font-size: 22px;
     background-color: black;
     color: plum;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: plum;
+    color: black;
+    box-shadow: 0 0 10px plum;
+}
+
+.inside-box > .h3-style {
+    text-align: left;
+    align-self: flex-start;
+    padding: 0px 10px;
+    color: rgb(98, 17, 138);
+}
+
+.equal {
+    background-color:rgb(98, 17, 138);
+    color: salmon;
+    border-bottom-right-radius: 10px;
+}
+
+.decimal {
+    border-bottom-left-radius: 10px;
+}
+
+footer {
+    display: flex;
+    text-align: center;
+    padding: 1rem;
+    color: #fff;
+    justify-content:space-between;
+    align-items: center;    
+}
+
+footer a svg {
+    fill: #fff;
+    transition: transform 0.2s ease;
+}
+
+footer a:hover svg {
+    transform: scale(1.1);
+    fill: plum;
 }
