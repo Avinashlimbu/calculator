@@ -78,12 +78,17 @@ body {
 
 .equal {
     background-color:rgb(98, 17, 138);
-    color: salmon;
+    color: whitesmoke;
     border-bottom-right-radius: 20px;
 }
 
 .decimal {
     border-bottom-left-radius: 20px;
+}
+
+.clear {
+    background-color: lightcoral;
+    color: whitesmoke;
 }
 
 

@@ -16,11 +16,18 @@ const divide = function(a, b) {
     return a / b;
 }
 
+const percentage = function(a) {
+    if (a === 0) {
+        alert ("cannot divide by zero");
+    }
+    return(a) / 100;
+}
 //Var for numbers to be stored
 
-let firstNum = "";
-let secondNum = "";
-let operator = "";
+let firstNum = null;
+let secondNum = null;
+let operator = null;
+let resetDisplay = false;
 
 //operating function that helps calcute with three arguement
 function operate(operator, a, b) {
@@ -38,6 +45,15 @@ function operate(operator, a, b) {
     }
 }
 
+function operateUnary(operator, a) {
+    if (operator === '%') {
+        return percentage(a);
+    }
+}
+
+
+
+
 //all the DOM calls
 const button = document.getElementsByClassName('numbers');
 const display = document.getElementById('display-area');
@@ -50,8 +66,12 @@ function displayArea () {
     for (let i = 0; i < button.length; i++) {
         button[i].addEventListener('click',(event) => {
             const target = event.target;
-            let content = display.value += target.textContent;
-            content = Number(content)
+        if(resetDisplay) {
+            display.value = target.textContent;
+            resetDisplay = false;
+        } else {
+            display.value += target.textContent;
+        }    
         });
     }
 }
@@ -60,10 +80,11 @@ displayArea();
 //clear button function
 function clear () {
     clearButton.addEventListener('click', function() {
-        firstNum = '';
-        secondNum = '';
-        operator = '';
-        document.getElementById('display-area').value = '';
+        firstNum = null;
+        secondNum = null;
+        operator = null;
+        display.value = '';
+        resetDisplay = false;
     });
 }
 clear();
@@ -72,29 +93,55 @@ clear();
 operators.forEach(function(op){
     op.addEventListener("click", (event) => {
         const target = event.target;
-        operator = target.textContent;
-        if (['+', '-', '*', '/'].includes(target.textContent)) {
+        const newOperator = target.textContent;
+
+        if(newOperator === '%') {
             firstNum = Number(display.value);
-            document.getElementById('display-area').value = '';
+            const unaryResult = operateUnary(newOperator, firstNum)
+            display.value = roundUp(unaryResult);
+            resetDisplay = true;
+            return;
+        }
+        if (!['+', '-', '*', '/'].includes(newOperator)) {
+            return;
         } 
+        if (firstNum !== null && operator !== null && display.value !== "") {
+            secondNum = Number(display.value);
+            if(isNaN(secondNum)) return;
+
+            const result = operate(operator, firstNum, secondNum);
+            display.value = roundUp(result);
+            firstNum = result;
+        } else {
+            firstNum = Number(display.value);
+        }
+        operator = newOperator;
+        resetDisplay = true;
     })
 })
 
 //equal button function
 
 equalButton.addEventListener("click", () => {
+    if(operator === null || firstNum === null) {
+        return;
+    }
     secondNum = Number(display.value);
+
     if(operator ==="/" && secondNum === 0) {
         alert("Cannot Divide by 0!")
         return;
-    } else if (!firstNum || !secondNum || !operator){
-        return "";
     }
+
     const result = operate(operator, firstNum, secondNum);
-    document.getElementById('display-area').value = roundUp(result);
+    display.value = roundUp(result);
+    firstNum = result;
+    operator = null;
+    resetDisplay = true;
 })
 
 // function for rounding upto 4 numbers
 function roundUp (number) {
     return Math.ceil(number * 10000)/ 10000;
 }
+
