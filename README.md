@@ -14,7 +14,7 @@ This project was created as part of [The Odin Project](https://www.theodinprojec
 
 ## 🚀 Live Demo
 
-> [[Live Demo Link](https://github.com/Avinashlimbu/calculator.git)]  
+> [[Live Demo Link](https://avinashlimbu.github.io/calculator/)]  
 
 ## 🛠️ Built With
 
