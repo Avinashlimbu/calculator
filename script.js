@@ -38,14 +38,14 @@ function operate(operator, a, b) {
     }
 }
 
-//function for display
-
+//all the DOM calls
 const button = document.getElementsByClassName('numbers');
 const display = document.getElementById('display-area');
 const operators = document.querySelectorAll('.operator');
 const clearButton = document.getElementById('clear-button');
-const equalButton = document.querySelectorAll('.equal');
+const equalButton = document.querySelector('.equal');
 
+//function for display
 function displayArea () {
     for (let i = 0; i < button.length; i++) {
         button[i].addEventListener('click',(event) => {
@@ -55,7 +55,6 @@ function displayArea () {
         });
     }
 }
-
 displayArea();
 
 //clear button function
@@ -67,7 +66,6 @@ function clear () {
         document.getElementById('display-area').value = '';
     });
 }
-
 clear();
 
 //operator function
@@ -84,10 +82,19 @@ operators.forEach(function(op){
 
 //equal button function
 
-equalButton.forEach(function(equal) {
-    equal.addEventListener("click", () => {
+equalButton.addEventListener("click", () => {
     secondNum = Number(display.value);
-    console.log(operate(operator, firstNum, secondNum))
-    document.getElementById('display-area').value = operate(operator, firstNum, secondNum);
-        })
-    })
+    if(operator ==="/" && secondNum === 0) {
+        alert("Cannot Divide by 0!")
+        return;
+    } else if (!firstNum || !secondNum || !operator){
+        return "";
+    }
+    const result = operate(operator, firstNum, secondNum);
+    document.getElementById('display-area').value = roundUp(result);
+})
+
+// function for rounding upto 4 numbers
+function roundUp (number) {
+    return Math.ceil(number * 10000)/ 10000;
+}
